@@ -3,7 +3,7 @@ import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
-import ClickOutside from "../../../shared/components/OutSideClick";
+import ClickOutside from "../../../shared/components/OutsideClick";
 
 const subjects = [
   { name: "student" },
