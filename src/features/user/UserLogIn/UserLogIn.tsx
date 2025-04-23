@@ -42,6 +42,29 @@ const UserLogIn = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const checkUserAccess = async () => {
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        try {
+          const res = await axios.get("/user-login-auth", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          if (res.status === 200) {
+            navigate("/user");
+          }
+        } catch (err: any) {
+          console.error(err);
+        }
+      }
+    };
+
+    checkUserAccess();
+  }, []);
+
   return (
     <div className="grow-1 flex flex-col items-center justify-center">
       <div className="mb-[0.5rem]">

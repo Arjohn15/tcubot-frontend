@@ -33,14 +33,21 @@ const AdminLogIn = () => {
       const token = localStorage.getItem("token");
 
       if (token) {
-        const res = await axios.get("http://localhost:5000/admin/dashboard", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        try {
+          const res = await axios.get(
+            "http://localhost:5000/admin/dashboard-auth",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
-        if (res.status === 200) {
-          navigate("/admin/dashboard");
+          if (res.status === 200) {
+            navigate("/admin/dashboard");
+          }
+        } catch (err: any) {
+          console.error(err.response.data.message);
         }
       }
     };

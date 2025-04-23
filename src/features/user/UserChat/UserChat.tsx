@@ -1,9 +1,13 @@
-import { FC, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import ClickOutside from "../../../shared/components/OutsideClick";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { fetchUser } from "../redux/userSlice";
 
 const subjects = [
   { name: "student" },
@@ -13,8 +17,11 @@ const subjects = [
 const UserChat: FC = () => {
   const [subject, setSubject] = useState("student");
   const [openSubjects, setOpenSubjects] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const { user, loading, error } = useAppSelector((state) => state.user);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const navigate = useNavigate();
 
   function handleClickOutside(): void {
     setOpenSubjects(false);
@@ -27,6 +34,16 @@ const UserChat: FC = () => {
       textarea.style.height = Math.min(textarea.scrollHeight, 85) + "px";
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      navigate("/");
+    }
+  }, [error]);
 
   return (
     <div>
