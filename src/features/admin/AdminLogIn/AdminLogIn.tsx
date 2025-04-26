@@ -21,7 +21,7 @@ const AdminLogIn = () => {
         password,
       });
 
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("token-admin", res.data.token);
       navigate("/admin/dashboard");
     } catch (err: any) {
       setServerMessage(err.response.data.message);
@@ -30,12 +30,12 @@ const AdminLogIn = () => {
 
   useEffect(() => {
     const checkAdminAccess = async () => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token-admin");
 
       if (token) {
         try {
           const res = await axios.get(
-            "http://localhost:5000/admin/dashboard-auth",
+            "http://localhost:5000/auth/admin-login-auth",
             {
               headers: {
                 Authorization: `Bearer ${token}`,

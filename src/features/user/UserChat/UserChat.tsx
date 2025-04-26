@@ -1,27 +1,26 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import ClickOutside from "../../../shared/components/OutsideClick";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { fetchUser } from "../redux/userSlice";
+import { useAppSelector } from "../../store/hooks";
+import { selectUserState } from "../redux/userSlice";
+import LoadingCircular from "../../../shared/components/LoadingCircular";
 
 const subjects = [
   { name: "student" },
   { name: "professor" },
   { name: "personnel" },
 ];
+
 const UserChat: FC = () => {
   const [subject, setSubject] = useState("student");
   const [openSubjects, setOpenSubjects] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
-  const { user, loading, error } = useAppSelector((state) => state.user);
+
+  const { user, loading } = useAppSelector(selectUserState);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const navigate = useNavigate();
 
   function handleClickOutside(): void {
     setOpenSubjects(false);
@@ -35,16 +34,14 @@ const UserChat: FC = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, []);
-
-  useEffect(() => {
-    if (error) {
-      navigate("/");
-    }
-  }, [error]);
-
+  if (loading) {
+    return (
+      <div className="h-[80vh]">
+        <LoadingCircular />;
+      </div>
+    );
+  }
+  console.log(user);
   return (
     <div>
       <div className="w-max flex m-[0.85rem] relative">

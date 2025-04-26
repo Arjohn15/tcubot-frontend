@@ -27,7 +27,7 @@ const AdminDashboard = () => {
         "http://192.168.100.234:5000/admin/dashboard",
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${localStorage.getItem("token-admin")}`,
           },
         }
       );
