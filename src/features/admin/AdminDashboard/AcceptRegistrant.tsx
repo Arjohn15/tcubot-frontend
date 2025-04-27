@@ -81,7 +81,7 @@ const AcceptRegistrant: FC<AcceptRegistrantProps> = ({
           ui ? (
             ui
           ) : (
-            <div className="bg-white rounded-lg px-[1rem] pt-[1rem] pb-[0.5rem] w-[350px]">
+            <div className="bg-black rounded-lg px-[1rem] pt-[1rem] pb-[0.5rem] w-[350px]">
               <div className="flex items-center pb-[1rem]">
                 <span className="opacity-[0.5]">
                   <img
