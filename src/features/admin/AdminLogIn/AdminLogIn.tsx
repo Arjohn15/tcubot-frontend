@@ -5,6 +5,7 @@ import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AdminHeader from "../shared/AdminHeader";
 
 const AdminLogIn = () => {
   const [username, setUsername] = useState("");
@@ -21,7 +22,7 @@ const AdminLogIn = () => {
         password,
       });
 
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("token-admin", res.data.token);
       navigate("/admin/dashboard");
     } catch (err: any) {
       setServerMessage(err.response.data.message);
@@ -30,17 +31,24 @@ const AdminLogIn = () => {
 
   useEffect(() => {
     const checkAdminAccess = async () => {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token-admin");
 
       if (token) {
-        const res = await axios.get("http://localhost:5000/admin/dashboard", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        try {
+          const res = await axios.get(
+            "http://localhost:5000/auth/admin-login-auth",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
 
-        if (res.status === 200) {
-          navigate("/admin/dashboard");
+          if (res.status === 200) {
+            navigate("/admin/dashboard");
+          }
+        } catch (err: any) {
+          console.error(err.response.data.message);
         }
       }
     };
@@ -50,20 +58,7 @@ const AdminLogIn = () => {
 
   return (
     <>
-      <header className="relative flex border-b-2 border-gray-half p-[0.5rem]">
-        <div>
-          <a href="/">
-            <img
-              src="/images/logos/tcubot-main-logo.png"
-              alt="TCUbot main logo"
-              width={120}
-            />
-          </a>
-        </div>
-        <h1 className="text-red text-xl font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-          Admin Dashboard
-        </h1>
-      </header>
+      <AdminHeader />
       <div className="grow-1 flex items-center justify-center">
         <div className="w-[25vw] border-2 border-gray-half px-[1.5rem] py-[2rem] rounded-lg grid gap-y-5">
           <div>

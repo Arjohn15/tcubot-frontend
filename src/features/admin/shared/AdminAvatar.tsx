@@ -16,7 +16,7 @@ const AdminAvatar: FC<AdminAvatarProps> = ({ first_name, last_name, role }) => {
   const ref = useRef<HTMLDivElement>(null);
 
   function handleLogoutAdmin(): void {
-    localStorage.removeItem("token");
+    localStorage.removeItem("token-admin");
     navigate("/admin");
   }
 

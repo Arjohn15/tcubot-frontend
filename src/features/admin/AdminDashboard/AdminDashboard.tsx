@@ -23,14 +23,11 @@ const AdminDashboard = () => {
 
   const fetchedAdminData = async () => {
     try {
-      const res = await axios.get(
-        "http://192.168.100.234:5000/admin/dashboard",
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
+      const res = await axios.get("http://localhost:5000/admin/dashboard", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token-admin")}`,
+        },
+      });
 
       setRegistrants(res.data.registrants);
       setAdmin(res.data.admin[0]);

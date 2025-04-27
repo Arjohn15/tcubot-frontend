@@ -4,15 +4,21 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
 import { FaCheckCircle } from "react-icons/fa";
 import ClickOutside from "../../../shared/components/OutsideClick";
+import { useAppSelector } from "../../store/hooks";
+import { selectUserState } from "../redux/userSlice";
+import LoadingCircular from "../../../shared/components/LoadingCircular";
 
 const subjects = [
   { name: "student" },
   { name: "professor" },
   { name: "personnel" },
 ];
+
 const UserChat: FC = () => {
   const [subject, setSubject] = useState("student");
   const [openSubjects, setOpenSubjects] = useState<boolean>(false);
+
+  const { loading } = useAppSelector(selectUserState);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -28,6 +34,13 @@ const UserChat: FC = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="h-[80vh]">
+        <LoadingCircular />;
+      </div>
+    );
+  }
   return (
     <div>
       <div className="w-max flex m-[0.85rem] relative">
@@ -70,8 +83,8 @@ const UserChat: FC = () => {
           </ClickOutside>
         )}
       </div>
-      <div className="h-[65vh] border-2 border-gray mx-[7.5rem] rounded-lg"></div>
-      <div className="flex justify-center mt-[1rem]">
+      <div className="h-[60vh] border-2 border-gray mx-[7.5rem] rounded-lg"></div>
+      <div className="flex justify-center mt-[2rem]">
         <div className="rounded-xl bg-gray w-[25%] flex items-center px-[1rem] py-[0.5rem]">
           <textarea
             placeholder="Ask about people of TCU"
