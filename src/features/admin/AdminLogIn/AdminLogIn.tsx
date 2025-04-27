@@ -5,6 +5,7 @@ import { LuEyeOff } from "react-icons/lu";
 import { LuEye } from "react-icons/lu";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AdminHeader from "../shared/AdminHeader";
 
 const AdminLogIn = () => {
   const [username, setUsername] = useState("");
@@ -57,20 +58,7 @@ const AdminLogIn = () => {
 
   return (
     <>
-      <header className="relative flex border-b-2 border-gray-half p-[0.5rem]">
-        <div>
-          <a href="/">
-            <img
-              src="/images/logos/tcubot-main-logo.png"
-              alt="TCUbot main logo"
-              width={120}
-            />
-          </a>
-        </div>
-        <h1 className="text-red text-xl font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-          Admin Dashboard
-        </h1>
-      </header>
+      <AdminHeader />
       <div className="grow-1 flex items-center justify-center">
         <div className="w-[25vw] border-2 border-gray-half px-[1.5rem] py-[2rem] rounded-lg grid gap-y-5">
           <div>

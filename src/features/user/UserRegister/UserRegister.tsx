@@ -25,15 +25,11 @@ const UserRegister = () => {
 
   async function onSubmit(data: any) {
     try {
-      const res = await axios.post(
-        "http://192.168.100.234:5000/register",
-        data,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await axios.post("http://localhost:5000/register", data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (res.status === 201) {
         localStorage.setItem("registered", "ok");

@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const AdminHeader = () => {
   return (
-    <header className="relative flex border-b-2 border-gray-half p-[0.5rem]">
+    <header className="flex justify-between items-center border-b-2 border-gray-half px-[2rem] py-[0.5rem]">
       <div>
         <a href="/">
           <img
@@ -10,9 +12,14 @@ const AdminHeader = () => {
           />
         </a>
       </div>
-      <h1 className="text-red text-xl font-bold absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-        Admin Dashboard
-      </h1>
+      <h1 className="text-red text-xl font-bold">Admin Dashboard</h1>
+      <span>
+        <Link to={"/"}>
+          <span className="font-bold w-max text-red block hover:cursor-pointer hover:underline">
+            Log in as user
+          </span>
+        </Link>
+      </span>
     </header>
   );
 };

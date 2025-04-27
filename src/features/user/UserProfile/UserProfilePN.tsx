@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useAppSelector } from "../../store/hooks";
 import { selectUserState } from "../redux/userSlice";
-import { MdLock, MdOutlinePublic } from "react-icons/md";
 import Modal from "../../../shared/components/Modal";
+import { MdOutlinePublic } from "react-icons/md";
+import { FaLock } from "react-icons/fa6";
+import UserProfilePrivacy from "./UserProfilePrivacy";
 
 const UserProfilePN = () => {
   const [modal, setModal] = useState<boolean>(false);
@@ -21,7 +23,6 @@ const UserProfilePN = () => {
         <strong>Phone number:</strong> {user.phone_number}
       </span>
       <Modal
-        boxContent={<p>Hello</p>}
         isModalOpen={modal}
         onOpenModal={handleOpenModal}
         onCloseModal={handleCloseModal}
@@ -32,11 +33,18 @@ const UserProfilePN = () => {
             </span>
           ) : (
             <span>
-              <MdLock />
+              <FaLock />
             </span>
           )
         }
         buttonStyle="flex ml-[0.5rem] hover:cursor-pointer hover:opacity-[0.5] duration-300"
+        boxContent={
+          <UserProfilePrivacy
+            name="Phone number"
+            onCloseModal={handleCloseModal}
+            is_public={user.show_birthday === 1 ? "public" : "private"}
+          />
+        }
       />
     </>
   );

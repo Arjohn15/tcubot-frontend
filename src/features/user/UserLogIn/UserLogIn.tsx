@@ -49,7 +49,7 @@ const UserLogIn = () => {
       if (token) {
         try {
           const res = await axios.get(
-            "http://192.168.100.234:5000/auth/user-login-auth",
+            "http://localhost:5000/auth/user-login-auth",
             {
               headers: {
                 Authorization: `Bearer ${token}`,

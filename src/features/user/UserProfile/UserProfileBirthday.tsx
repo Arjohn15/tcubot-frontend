@@ -2,8 +2,10 @@ import dayjs from "dayjs";
 import { FC, useState } from "react";
 import { useAppSelector } from "../../store/hooks";
 import { selectUserState } from "../redux/userSlice";
-import { MdLock, MdOutlinePublic } from "react-icons/md";
+import { MdOutlinePublic } from "react-icons/md";
+import { FaLock } from "react-icons/fa6";
 import Modal from "../../../shared/components/Modal";
+import UserProfilePrivacy from "./UserProfilePrivacy";
 
 const UserProfileBirthday: FC = () => {
   const [modal, setModal] = useState<boolean>(false);
@@ -23,7 +25,6 @@ const UserProfileBirthday: FC = () => {
         {dayjs().diff(dayjs(user.birthday), "year")} years old)
       </span>
       <Modal
-        boxContent={<p>Hello</p>}
         isModalOpen={modal}
         onOpenModal={handleOpenModal}
         onCloseModal={handleCloseModal}
@@ -34,11 +35,18 @@ const UserProfileBirthday: FC = () => {
             </span>
           ) : (
             <span>
-              <MdLock />
+              <FaLock />
             </span>
           )
         }
         buttonStyle="flex ml-[0.5rem] hover:cursor-pointer hover:opacity-[0.5] duration-300"
+        boxContent={
+          <UserProfilePrivacy
+            name="Birthday"
+            onCloseModal={handleCloseModal}
+            is_public={user.show_birthday === 1 ? "public" : "private"}
+          />
+        }
       />
     </>
   );

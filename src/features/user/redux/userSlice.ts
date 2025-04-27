@@ -45,7 +45,7 @@ const initialState: UserState = {
 export const fetchUser = createAsyncThunk<any[]>("user/fetchUser", async () => {
   const token = localStorage.getItem("token-user");
 
-  const res = await axios.get("http://192.168.100.234:5000/user", {
+  const res = await axios.get("http://localhost:5000/user", {
     headers: {
       Authorization: `Bearer ${token}`,
     },

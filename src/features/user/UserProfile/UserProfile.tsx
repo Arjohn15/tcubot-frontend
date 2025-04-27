@@ -6,10 +6,11 @@ import CopyText from "../../../shared/components/CopyText";
 import { useNavigate } from "react-router-dom";
 import UserProfileBirthday from "./UserProfileBirthday";
 import UserProfilePN from "./UserProfilePN";
-import { Button } from "@mui/material";
 import { MdLogout } from "react-icons/md";
 import { getCourseFormalName } from "../../../utils/getCourseFormalName";
 import { getYearDescription } from "../../../utils/getYearDescription";
+import { FaKey } from "react-icons/fa6";
+import UPChangePassword from "./UPChangePassword";
 
 const UserProfile = () => {
   const { user, loading } = useAppSelector(selectUserState);
@@ -31,7 +32,7 @@ const UserProfile = () => {
     }
   }
   return (
-    <div>
+    <div className="pb-[3rem]">
       <div className="relative flex items-center justify-center py-[1rem]">
         <button
           className="absolute left-[1rem] hover:cursor-pointer hover:opacity-[0.5] duration-300"
@@ -105,6 +106,9 @@ const UserProfile = () => {
               </div>
             </div>
             <div className="mt-[2rem]">
+              <UPChangePassword />
+            </div>
+            <div className="mt-[1rem]">
               <button
                 onClick={handleLogout}
                 className="flex items-center border-2 border-gray rounded-xl text-red px-[0.5rem] hover:cursor-pointer hover:opacity-[0.65] duration-300 font-bold"
@@ -115,8 +119,8 @@ const UserProfile = () => {
                 </span>
               </button>
             </div>
-            <span className="text-xs block mt-[2rem]">
-              <strong>Note:</strong>
+            <span className="text-xs block mt-[2rem] flex italic text-center">
+              <strong className="mr-[0.25rem]">Note: </strong>
               If you wish to edit your information due to misspelled name,
               incorrect birthday, etc., you may request to the admin by clicking
               here.

@@ -18,7 +18,7 @@ const UserChat: FC = () => {
   const [subject, setSubject] = useState("student");
   const [openSubjects, setOpenSubjects] = useState<boolean>(false);
 
-  const { user, loading } = useAppSelector(selectUserState);
+  const { loading } = useAppSelector(selectUserState);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -41,7 +41,6 @@ const UserChat: FC = () => {
       </div>
     );
   }
-  console.log(user);
   return (
     <div>
       <div className="w-max flex m-[0.85rem] relative">
@@ -84,8 +83,8 @@ const UserChat: FC = () => {
           </ClickOutside>
         )}
       </div>
-      <div className="h-[65vh] border-2 border-gray mx-[7.5rem] rounded-lg"></div>
-      <div className="flex justify-center mt-[1rem]">
+      <div className="h-[60vh] border-2 border-gray mx-[7.5rem] rounded-lg"></div>
+      <div className="flex justify-center mt-[2rem]">
         <div className="rounded-xl bg-gray w-[25%] flex items-center px-[1rem] py-[0.5rem]">
           <textarea
             placeholder="Ask about people of TCU"
