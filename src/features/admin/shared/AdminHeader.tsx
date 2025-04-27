@@ -12,7 +12,7 @@ const AdminHeader = () => {
           />
         </a>
       </div>
-      <h1 className="text-red text-xl font-bold">Admin Dashboard</h1>
+      <h1 className="text-red text-center font-bold">Admin Dashboard</h1>
       <span>
         <Link to={"/"}>
           <span className="font-bold w-max text-red block hover:cursor-pointer hover:underline">

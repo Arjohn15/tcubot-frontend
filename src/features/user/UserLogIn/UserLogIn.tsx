@@ -78,7 +78,7 @@ const UserLogIn = () => {
             width={250}
           />
         </div>
-        <div className="w-[25vw] border-2 border-gray-half px-[1.5rem] py-[2rem] rounded-lg grid gap-y-5 mb-[5rem]">
+        <div className="w-[75vw] sm:w-[50vw] md:w-[25vw] border-2 border-gray-half px-[1.5rem] py-[2rem] rounded-lg grid gap-y-5 mb-[5rem]">
           <div>
             <TextField
               id="user-schoolNumber"
