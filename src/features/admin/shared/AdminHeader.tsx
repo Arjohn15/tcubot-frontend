@@ -6,7 +6,7 @@ const AdminHeader = () => {
       <div>
         <a href="/">
           <img
-            src="/images/logos/tcubot-main-logo.png"
+            src="/images/logos/tcubot-main-logo(2).png"
             alt="TCUbot main logo"
             width={120}
           />

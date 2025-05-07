@@ -73,7 +73,7 @@ const UserLogIn = () => {
       <div className="grow-1 flex flex-col items-center justify-center">
         <div className="mb-[0.5rem]">
           <img
-            src="/images/logos/tcubot-main-logo.png"
+            src="/images/logos/tcubot-main-logo(2).png"
             alt="TCUbot main logo"
             width={250}
           />

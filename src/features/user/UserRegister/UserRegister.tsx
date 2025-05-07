@@ -63,10 +63,10 @@ const UserRegister = () => {
   }
   return (
     <div className="h-[100vh] flex flex-col">
-      <div className="grow-1">
+      <div className="grow-1 flex flex-col items-center justify-center">
         <div className="mt-[3rem] mb-[0.5rem] w-full flex justify-center">
           <img
-            src="/images/logos/tcubot-main-logo.png"
+            src="/images/logos/tcubot-main-logo(2).png"
             alt="TCUbot main logo"
             width={250}
           />
@@ -78,7 +78,7 @@ const UserRegister = () => {
             noValidate
             sx={{ maxWidth: 400, mx: "auto" }}
           >
-            <div className="w-[30vw] border-2 border-gray-half px-[1.5rem] py-[2rem] rounded-lg grid gap-y-5 mb-[5rem]">
+            <div className="w-[75vw] sm:w-[50vw] md:w-[25vw] border-2 border-gray-half px-[1.5rem] py-[2rem] rounded-lg grid gap-y-5 mb-[5rem]">
               <h1 className="text-xl font-bold text-center">
                 Register a new account
               </h1>
